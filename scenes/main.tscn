@@ -1,11 +1,14 @@
-[gd_scene format=3 uid="uid://c6v2n4q0fxy1e"]
+[gd_scene load_steps=8 format=3 uid="uid://c6v2n4q0fxy1e"]
 
 [ext_resource type="Script" uid="uid://cfuosvmpy0shk" path="res://scripts/main.gd" id="1_main"]
 [ext_resource type="Texture2D" uid="uid://hwhgcnggirnn" path="res://image-removebg-preview.png" id="2_sugp2"]
 [ext_resource type="Script" uid="uid://bqvy21nxgujne" path="res://scenes/pause.gd" id="3_tbgi4"]
+[ext_resource type="PackedScene" path="res://scenes/player.tscn" id="4_player"]
 [ext_resource type="Texture2D" uid="uid://w7bfkxbuaqr0" path="res://dragon_background.jpg" id="5_tbgi4"]
 [ext_resource type="Script" uid="uid://bl11a88aht8n8" path="res://scenes/animated_sprite_2d_2.gd" id="5_tefeu"]
 [ext_resource type="Texture2D" uid="uid://badgi1oaydv8u" path="res://nobi.png" id="6_o6xl0"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_floor"]
 
 [node name="Main" type="Node2D" unique_id=257177198]
 script = ExtResource("1_main")
@@ -62,3 +65,19 @@ script = ExtResource("5_tefeu")
 position = Vector2(77.99999, 540)
 scale = Vector2(0.6312057, 0.59703505)
 texture = ExtResource("6_o6xl0")
+
+[node name="Player" parent="." instance=ExtResource("4_player")]
+position = Vector2(576, 200)
+
+[node name="Ground" type="StaticBody2D" parent="."]
+position = Vector2(576, 550)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
+shape = SubResource("WorldBoundaryShape2D_floor")
+
+[node name="ColorRect" type="ColorRect" parent="Ground"]
+offset_left = -600.0
+offset_top = 0.0
+offset_right = 600.0
+offset_bottom = 40.0
+color = Color(0.18, 0.65, 0.28, 1)
