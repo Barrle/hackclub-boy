@@ -1,9 +1,12 @@
-[gd_scene format=3 uid="uid://c6v2n4q0fxy1e"]
+[gd_scene load_steps=7 format=3 uid="uid://c6v2n4q0fxy1e"]
 
 [ext_resource type="Script" uid="uid://cfuosvmpy0shk" path="res://scripts/main.gd" id="1_main"]
 [ext_resource type="Texture2D" uid="uid://hwhgcnggirnn" path="res://image-removebg-preview.png" id="2_sugp2"]
 [ext_resource type="Script" uid="uid://c8bqhd57v1kuy" path="res://scenes/animated_sprite_2d.gd" id="3_jyhfs"]
 [ext_resource type="Script" uid="uid://bqvy21nxgujne" path="res://scenes/pause.gd" id="3_tbgi4"]
+[ext_resource type="PackedScene" path="res://scenes/player.tscn" id="4_player"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_floor"]
 
 [node name="Main" type="Node2D" unique_id=257177198]
 script = ExtResource("1_main")
@@ -52,3 +55,19 @@ script = ExtResource("3_tbgi4")
 [node name="PauseSprite" type="Sprite2D" parent="Pause" unique_id=2323130]
 position = Vector2(602, 305)
 texture = ExtResource("2_sugp2")
+
+[node name="Player" parent="." instance=ExtResource("4_player")]
+position = Vector2(576, 200)
+
+[node name="Ground" type="StaticBody2D" parent="."]
+position = Vector2(576, 550)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
+shape = SubResource("WorldBoundaryShape2D_floor")
+
+[node name="ColorRect" type="ColorRect" parent="Ground"]
+offset_left = -600.0
+offset_top = 0.0
+offset_right = 600.0
+offset_bottom = 40.0
+color = Color(0.18, 0.65, 0.28, 1)
