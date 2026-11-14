@@ -2,8 +2,10 @@
 
 [ext_resource type="Script" uid="uid://cfuosvmpy0shk" path="res://scripts/main.gd" id="1_main"]
 [ext_resource type="Texture2D" uid="uid://hwhgcnggirnn" path="res://image-removebg-preview.png" id="2_sugp2"]
-[ext_resource type="Script" uid="uid://c8bqhd57v1kuy" path="res://scenes/animated_sprite_2d.gd" id="3_jyhfs"]
 [ext_resource type="Script" uid="uid://bqvy21nxgujne" path="res://scenes/pause.gd" id="3_tbgi4"]
+[ext_resource type="Texture2D" uid="uid://w7bfkxbuaqr0" path="res://dragon_background.jpg" id="5_tbgi4"]
+[ext_resource type="Script" uid="uid://bl11a88aht8n8" path="res://scenes/animated_sprite_2d_2.gd" id="5_tefeu"]
+[ext_resource type="Texture2D" uid="uid://badgi1oaydv8u" path="res://nobi.png" id="6_o6xl0"]
 
 [node name="Main" type="Node2D" unique_id=257177198]
 script = ExtResource("1_main")
@@ -40,11 +42,6 @@ theme_override_font_sizes/font_size = 28
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2123105662]
-script = ExtResource("3_jyhfs")
-
-[node name="Sprite2D" type="Sprite2D" parent="AnimatedSprite2D" unique_id=1941660733]
-
 [node name="Pause" type="Node" parent="." unique_id=968201286]
 process_mode = 3
 script = ExtResource("3_tbgi4")
@@ -52,3 +49,16 @@ script = ExtResource("3_tbgi4")
 [node name="PauseSprite" type="Sprite2D" parent="Pause" unique_id=2323130]
 position = Vector2(602, 305)
 texture = ExtResource("2_sugp2")
+
+[node name="Background1" type="Sprite2D" parent="." unique_id=1176818935]
+position = Vector2(574, 328)
+scale = Vector2(1.7731482, 2.1038961)
+texture = ExtResource("5_tbgi4")
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="." unique_id=1554340118]
+script = ExtResource("5_tefeu")
+
+[node name="Nobi" type="Sprite2D" parent="AnimatedSprite2D2" unique_id=476532602]
+position = Vector2(77.99999, 540)
+scale = Vector2(0.6312057, 0.59703505)
+texture = ExtResource("6_o6xl0")
