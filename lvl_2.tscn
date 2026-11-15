@@ -8,6 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://badgi1oaydv8u" path="res://nobi.png" id="4_bmf8x"]
 [ext_resource type="Script" uid="uid://dn4ywrb72ml4v" path="res://scenes/area_2d.gd" id="5_l31ol"]
 [ext_resource type="Script" uid="uid://cvkjuosqgqxdx" path="res://scenes/magic.gd" id="8_f7f4c"]
+[ext_resource type="Script" uid="uid://co540eu35dvp5" path="res://magic_2.gd" id="9_beans"]
+[ext_resource type="Script" uid="uid://cuop6y03kxqee" path="res://static_body_2d_13.gd" id="10_tmnqu"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_f7f4c"]
 outline_size = 9
@@ -44,6 +46,9 @@ size = Vector2(254, 30)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_22vjt"]
 size = Vector2(46.5, 15.265625)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t0ydl"]
+size = Vector2(113, 166)
 
 [node name="Lvl2" type="Node2D" unique_id=464710633]
 
@@ -145,7 +150,7 @@ position = Vector2(-12.980301, 257.12927)
 shape = SubResource("RectangleShape2D_1v3ac")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1485998427]
-position = Vector2(-132, 185)
+position = Vector2(-126, 136)
 script = ExtResource("3_l31ol")
 metadata/_edit_group_ = true
 
@@ -235,7 +240,7 @@ position = Vector2(76.25, 243.63281)
 shape = SubResource("RectangleShape2D_f7f4c")
 
 [node name="StaticBody2D9" type="StaticBody2D" parent="." unique_id=596202062]
-position = Vector2(520, 252)
+position = Vector2(562, 251)
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D9" unique_id=1432760391]
@@ -277,6 +282,58 @@ visible = false
 position = Vector2(76.25, 243.63281)
 shape = SubResource("RectangleShape2D_22vjt")
 
+[node name="StaticBody2D11" type="StaticBody2D" parent="." unique_id=1217323405]
+position = Vector2(1051, 399)
+metadata/_edit_group_ = true
+
+[node name="Magic2" type="Area2D" parent="StaticBody2D11" unique_id=1316030904 node_paths=PackedStringArray("block_to_move")]
+position = Vector2(-337, -153)
+script = ExtResource("9_beans")
+block_to_move = NodePath("../../CharacterBody2D")
+
+[node name="Nah" type="CollisionShape2D" parent="StaticBody2D11/Magic2" unique_id=1946731464]
+position = Vector2(-153.5, -2)
+shape = SubResource("RectangleShape2D_beans")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="StaticBody2D11/Magic2" unique_id=2053658979]
+visible = false
+position = Vector2(226, 160)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D11/Magic2/StaticBody2D4" unique_id=1595918688]
+visible = false
+position = Vector2(76, 244.00002)
+scale = Vector2(0.14285715, 0.46874982)
+texture = ExtResource("2_tu4c3")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D11/Magic2/StaticBody2D4" unique_id=686319169]
+visible = false
+position = Vector2(76.25, 243.63281)
+shape = SubResource("RectangleShape2D_tmnqu")
+
+[node name="StaticBody2D12" type="StaticBody2D" parent="." unique_id=1729736996]
+position = Vector2(486, 24)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D12" unique_id=1175909518]
+position = Vector2(76, 244.00002)
+scale = Vector2(0.14285715, 0.46874982)
+texture = ExtResource("2_tu4c3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D12" unique_id=467451070]
+position = Vector2(76.25, 243.63281)
+shape = SubResource("RectangleShape2D_f7f4c")
+
+[node name="StaticBody2D13" type="Area2D" parent="." unique_id=1397678607]
+script = ExtResource("10_tmnqu")
+
+[node name="Noob" type="CollisionShape2D" parent="StaticBody2D13" unique_id=1196936881]
+position = Vector2(842, 405)
+shape = SubResource("RectangleShape2D_t0ydl")
+
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
 [connection signal="body_entered" from="StaticBody2D6/Magic" to="StaticBody2D6/Magic" method="_on_body_entered"]
 [connection signal="body_entered" from="StaticBody2D10/Magic" to="StaticBody2D10/Magic" method="_on_body_entered"]
+[connection signal="body_entered" from="StaticBody2D11/Magic2" to="StaticBody2D11/Magic2" method="_on_body_entered"]
+[connection signal="body_entered" from="StaticBody2D13" to="StaticBody2D13" method="_on_body_entered"]
