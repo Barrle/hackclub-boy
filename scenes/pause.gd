@@ -1,17 +1,19 @@
 extends Node
 
 var n : int = 1
+var e: int=2
+
 func _unhandled_input(event: InputEvent) -> void:
+	get_tree().paused = false
+	$PauseSprite.visible = false
 	if event.is_action("ui_cancel") and not event.is_echo():
-		if n == 1:
-			n = 0
-		elif n==0 :
-			n=1	
+		e+=1
+		
 		toggle_pause()
 func toggle_pause() -> void:
-	if n == 1:
+	if e%2==0:
 		get_tree().paused = false 		
 		$PauseSprite.visible = false
-	elif n  == 0:
+	elif e%2!=0:
 		get_tree().paused = true
 		$PauseSprite.visible = true	
