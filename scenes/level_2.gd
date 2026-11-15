@@ -1,0 +1,3 @@
+extends Label
+func _ready() -> void:
+	text = str(Global.level_2)

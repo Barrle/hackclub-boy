@@ -1,0 +1,89 @@
+[gd_scene format=3 uid="uid://frbhwij1y28q"]
+
+[ext_resource type="Script" uid="uid://b13ycogp8ticq" path="res://scenes/character_body_2d.gd" id="1_8muly"]
+[ext_resource type="Texture2D" uid="uid://cerebaw4rkjdd" path="res://WhatsApp Image 2026-11-15 at 3.49.09 PM.jpeg" id="1_ytcif"]
+[ext_resource type="Texture2D" uid="uid://badgi1oaydv8u" path="res://nobi.png" id="2_ytcif"]
+[ext_resource type="Texture2D" uid="uid://h7uyo7py5lo6" path="res://Screenshot 2026-11-14 191109.png" id="3_13mhm"]
+[ext_resource type="Texture2D" uid="uid://cvm2i4qcvp44v" path="res://doremon.png" id="4_g87cy"]
+[ext_resource type="Script" uid="uid://dn4ywrb72ml4v" path="res://scenes/area_2d.gd" id="6_13mhm"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_sboe7"]
+outline_size = 9
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ynrix"]
+size = Vector2(46, 69.75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8efx6"]
+size = Vector2(551, 15.265625)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g87cy"]
+size = Vector2(1754, 162.875)
+
+[node name="Node2D" type="Node2D" unique_id=630625911]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=776992021]
+position = Vector2(580.625, 324.125)
+scale = Vector2(0.7192187, 0.70861113)
+texture = ExtResource("1_ytcif")
+
+[node name="Death2" type="Label" parent="." unique_id=2060821149]
+offset_left = 497.0
+offset_top = 218.0
+offset_right = 838.0
+offset_bottom = 251.0
+theme_override_colors/font_color = Color(0.28627452, 0.21176471, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 70
+text = "CONGRATSSS!!! YOU FOUND DOREMONNNN"
+label_settings = SubResource("LabelSettings_sboe7")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=204914228]
+position = Vector2(313, 205)
+script = ExtResource("1_8muly")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D" unique_id=1857449884]
+position = Vector2(304.25, 122.59375)
+scale = Vector2(0.15425533, 0.19626011)
+texture = ExtResource("2_ytcif")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=1711423360]
+position = Vector2(306, 124.625)
+shape = SubResource("RectangleShape2D_ynrix")
+
+[node name="StaticBody2D9" type="StaticBody2D" parent="." unique_id=272052850]
+position = Vector2(451, 134)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D9" unique_id=1401801540]
+position = Vector2(225.99998, 244.00002)
+scale = Vector2(1.7142859, 0.46874982)
+texture = ExtResource("3_13mhm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D9" unique_id=61979882]
+position = Vector2(226.5, 243.63281)
+shape = SubResource("RectangleShape2D_8efx6")
+
+[node name="CharacterBody2D2" type="CharacterBody2D" parent="." unique_id=1341609668]
+position = Vector2(356, 205)
+script = ExtResource("1_8muly")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D2" unique_id=751994969]
+position = Vector2(311.56778, 128.69652)
+scale = Vector2(0.23423116, 0.24197368)
+texture = ExtResource("4_g87cy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D2" unique_id=1588473542]
+position = Vector2(310, 126.125)
+shape = SubResource("RectangleShape2D_ynrix")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1570597851]
+script = ExtResource("6_13mhm")
+
+[node name="blocks" type="CollisionShape2D" parent="Area2D" unique_id=1942905551]
+position = Vector2(543, 615.5625)
+shape = SubResource("RectangleShape2D_g87cy")
+
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]

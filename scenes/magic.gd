@@ -2,7 +2,7 @@ extends Area2D
 
 
 @export var block_to_move: CharacterBody2D
-var pos = Vector2(-2 , -31)
+var pos = Vector2(72 , -36)
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.name == "CharacterBody2D":
